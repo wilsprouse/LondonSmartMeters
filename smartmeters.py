@@ -104,6 +104,8 @@ class SeasonalEnergyUse:
         sortedDays = self.getData().sort_values(by='day')
 
         for (index, row) in sortedDays.iterrows():
+            print(row["day"][:4])
+            break
             if row["day"][:4] == self.best_year:
                 if row['day'] in self.avgDayDict:
                     self.avgDayDict[row['day']] = self.avgDayDict[row['day']][0], self.avgDayDict[row['day']][1]+1
