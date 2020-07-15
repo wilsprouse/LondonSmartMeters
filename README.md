@@ -44,6 +44,8 @@ any block provided by UK Power Networks. The file is hardcoded, so you must chan
 within the code, or use pythons stdin to pass in the file name as an argument.
 
 Using the run.sh file automatically pushes changes to GitHub,  and runs the program.
+If you cannot execute run.sh, you have to change its file permissions with the command line
+command $ chmod 777 run.sh
 
 CONCLUSION: 
 There is a clear trend in seasonal energy consumption. Trivially, we can attribute this
