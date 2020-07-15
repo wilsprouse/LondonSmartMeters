@@ -120,9 +120,10 @@ class SeasonalEnergyUse:
 
         self.avgPerDay()
         plt.plot(*zip(*sorted(self.avgDayDict.items())),color="green")
-        plt.title("2013 Energy Use")
+        plt.title("Average Energy Use in 2013")
         plt.xlabel('2013')
-        plt.ylabel('Energy Use')
+        plt.ylabel('Average Energy Use')
+        plt.xticks(["Jan",'Feb',"March","April","May","June","July","Aug","Sept","Oct", "Nov","Dec"])
         plt.show()
 
 
