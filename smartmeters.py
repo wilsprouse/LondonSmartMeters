@@ -91,9 +91,15 @@ class SeasonalEnergyUse:
     def __init__(self):
         self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day", "energy_sum"])
 
+    def getData(self):
+        return self.file_data
+
     def printData(self):
         print(self.file_data)
 
+    def avgPerDay(self):
+        sortedDays = self.getData().sort_values(by='day')
+        print(sortedDays)
 
 
 def driver():
@@ -108,7 +114,7 @@ def driver():
 
     season_use = SeasonalEnergyUse()
 
-    season_use.printData()
+    season_use.avgPerDay()
 
 
 driver()
