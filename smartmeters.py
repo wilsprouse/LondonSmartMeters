@@ -185,16 +185,16 @@ def driver():
 
     most_data = MostData()
 
-    most_data.displayDay() # Use this to see data per day from 2011-2014
+    #most_data.displayDay() # Use this to see data per day from 2011-2014
 
     #most_data.displayYear() # Use this to see a visual of the bar graph of the best year
 
 
-    #season_use = SeasonalEnergyUse(most_data.bestYear())
+    season_use = SeasonalEnergyUse(most_data.bestYear())
 
     #season_use.avgPerDay()
 
-    #season_use.displayBestYear()
+    season_use.displayBestYear()
 
 
 driver()
