@@ -115,14 +115,14 @@ class SeasonalEnergyUse:
         for day in tempDayDict.items():
             self.avgDayDict[day[0]] = round(day[1][0]/day[1][1], 2)
 
-        #print(self.avgDayDict)
 
     def displayBestYear(self):
 
+        self.avgPerDay()
         plt.plot(*zip(*sorted(self.avgDayDict.items())),color="green")
-        plt.title("Average Household Data From 2011-2014")
-        plt.xlabel('Year')
-        plt.ylabel('Households')
+        plt.title("2013 Energy Use")
+        plt.xlabel('2013')
+        plt.ylabel('Energy Use')
         plt.show()
 
 
@@ -141,7 +141,7 @@ def driver():
 
     season_use = SeasonalEnergyUse(most_data.bestYear())
 
-    season_use.avgPerDay()
+    #season_use.avgPerDay()
 
     season_use.displayBestYear()
 
