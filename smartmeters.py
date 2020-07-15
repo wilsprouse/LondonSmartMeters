@@ -69,8 +69,8 @@ class MostData:
         plt.bar(x_pos, energyUseAverage, color='green')
 
         plt.xlabel("Year")
-        plt.ylabel("Average Data Points Per Day")
-        plt.title("Energy Usage Data Points by Year from 2011-2014")
+        plt.ylabel("Amount of Households Participating")
+        plt.title("Households Participating per Year from 2011-2014")
 
         plt.xticks(x_pos, xAxis)
 
