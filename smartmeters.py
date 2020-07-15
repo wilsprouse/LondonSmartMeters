@@ -88,8 +88,10 @@ class MostData:
 
 class SeasonalEnergyUse:
 
-    def __init__(self):
-        self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day", "energy_sum"])
+    def __init__(self, best_year):
+        self.file_data = pd.read_csv("block_0.csv", usecols=["day", "energy_sum"])
+        self.best_year = best_year
+        self.avgDayDict = {}
 
     def getData(self):
         return self.file_data
@@ -98,8 +100,17 @@ class SeasonalEnergyUse:
         print(self.file_data)
 
     def avgPerDay(self):
+
         sortedDays = self.getData().sort_values(by='day')
-        print(sortedDays)
+
+        for (index, row) in sortedDays.iterrows():
+            if row["day"][:4] == self.best_year:
+                if row['day'] in self.avgDayDict:
+                    self.avgDayDict[row['day']] = self.avgDayDict[row['day']][0], self.avgDayDict[row['day']][1]+1
+                else:
+                    self.avgDayDict[row['day']] = row['energy_sum'], 1
+        print(self.avgDayDict)
+
 
 
 def driver():
@@ -112,7 +123,7 @@ def driver():
 
     #print(most_data.bestYear())
 
-    season_use = SeasonalEnergyUse()
+    season_use = SeasonalEnergyUse(most_data.bestYear())
 
     season_use.avgPerDay()
 
