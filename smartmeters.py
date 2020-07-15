@@ -123,7 +123,8 @@ class SeasonalEnergyUse:
         plt.title("Average Energy Use in 2013")
         plt.xlabel('2013')
         plt.ylabel('Average Energy Use')
-        plt.xticks(["Jan",'Feb',"March","April","May","June","July","Aug","Sept","Oct", "Nov","Dec"])
+        x_pos = [i for i, _ in enumerate(x)]
+        plt.xticks(["Jan",'Feb',"March","April","May","June","July","Aug","Sept","Oct", "Nov","Dec"], x_pos)
         plt.show()
 
 
