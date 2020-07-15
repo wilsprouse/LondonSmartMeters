@@ -113,7 +113,7 @@ class SeasonalEnergyUse:
                     tempDayDict[row['day']] = row['energy_sum'], 1
 
         for day in tempDayDict.items():
-            self.avgDayDict[day[0]] = day[1]/day[2]
+            self.avgDayDict[day[0]] = day[1][0]/day[1][1]
 
         print(self.avgDayDict)
 
