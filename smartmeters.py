@@ -107,7 +107,7 @@ class SeasonalEnergyUse:
 
         for (index, row) in sortedDays.iterrows():
             if row["day"][:4] == self.best_year[0]:
-                if row['day'] in self.tempDayDict:
+                if row['day'] in tempDayDict:
                     tempDayDict[row['day']] = tempDayDict[row['day']][0]+row['energy_sum'], tempDayDict[row['day']][1]+1
                 else:
                     tempDayDict[row['day']] = row['energy_sum'], 1
