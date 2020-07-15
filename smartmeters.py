@@ -103,16 +103,21 @@ class SeasonalEnergyUse:
 
         sortedDays = self.getData().sort_values(by='day')
 
+        tempDayDict = {}
+
         for (index, row) in sortedDays.iterrows():
-            #print(row["day"][:4])
-            #print(self.best_year)
-            #break
             if row["day"][:4] == self.best_year[0]:
-                if row['day'] in self.avgDayDict:
-                    self.avgDayDict[row['day']] = self.avgDayDict[row['day']][0]+row['energy_sum'], self.avgDayDict[row['day']][1]+1
+                if row['day'] in self.tempDayDict:
+                    tempDayDict[row['day']] = tempDayDict[row['day']][0]+row['energy_sum'], tempDayDict[row['day']][1]+1
                 else:
-                    self.avgDayDict[row['day']] = row['energy_sum'], 1
+                    tempDayDict[row['day']] = row['energy_sum'], 1
+
+        for day in tempDayDict.items():
+            self.avgDayDict[day[0]] = day[1]/day[2]
+
         print(self.avgDayDict)
+
+
 
 
 
