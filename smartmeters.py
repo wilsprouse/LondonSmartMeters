@@ -41,10 +41,12 @@ class MostData:
 
         for key in self.days:
             self.years[key[:4]] += self.days[key]
-        self.years['2011'] = self.years['2011'] / 365
-        self.years['2012'] = self.years['2012'] / 365
-        self.years['2013'] = self.years['2013'] / 365
-        self.years['2014'] = self.years['2014'] / 365
+        for year in self.years.items():
+            self.years[year] = self.years[year] / 365
+        #self.years['2011'] = self.years['2011'] / 365
+        #self.years['2012'] = self.years['2012'] / 365
+        #self.years['2013'] = self.years['2013'] / 365
+        #self.years['2014'] = self.years['2014'] / 365
 
     def displayYear(self):
         """Bar Graph of the average amount of data points per day by year"""
@@ -70,7 +72,7 @@ class MostData:
     def displayDay(self):
         self.DataByDay()
         plt.plot(*zip(*sorted(self.days.items())),color="green")
-        plt.title("Average Household Data From 2012-2014")
+        plt.title("Average Household Data From 2011-2014")
         plt.xlabel('Year')
         plt.ylabel('Households')
         plt.show()
