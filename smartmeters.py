@@ -89,7 +89,7 @@ class MostData:
 class SeasonalEnergyUse:
 
     def __init__(self):
-        self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day", "energy_mean"])
+        self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day", "energy_sum"])
 
     def printData(self):
         print(self.file_data)
