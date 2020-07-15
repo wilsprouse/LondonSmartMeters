@@ -86,14 +86,13 @@ class MostData:
         return self.best_year
 
 
-
-
-
-
 class SeasonalEnergyUse:
 
     def __init__(self):
         self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day", "energy_mean"])
+
+    def printData(self):
+        print(self.file_data)
 
 
 
@@ -105,7 +104,11 @@ def driver():
 
     #most_data.displayYear() # Use this to see a visual of the bar graph of the best year
 
-    print(most_data.bestYear())
+    #print(most_data.bestYear())
+
+    season_use = SeasonalEnergyUse()
+
+    season_use.printData()
 
 
 driver()
