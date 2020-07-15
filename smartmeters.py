@@ -14,7 +14,7 @@ class MostData:
         self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day"])
         self.days = {}
         self.years = {"2011": 0, "2012": 0, "2013": 0, "2014": 0 }
-        self.best_year = None
+        self.best_year = 'year', 0
 
     def getData(self):
         """Returns the file data in column x row form"""
@@ -41,12 +41,9 @@ class MostData:
 
         for key in self.days:
             self.years[key[:4]] += self.days[key]
+
         for year in self.years.items():
             self.years[year[0]] = self.years[year[0]] / 365
-        #self.years['2011'] = self.years['2011'] / 365
-        #self.years['2012'] = self.years['2012'] / 365
-        #self.years['2013'] = self.years['2013'] / 365
-        #self.years['2014'] = self.years['2014'] / 365
 
     def displayYear(self):
         """Bar Graph of the average amount of data points per day by year"""
@@ -80,8 +77,12 @@ class MostData:
     def bestYear(self):
         """This is the method that automatically gets our best year to evaluate seasonal energy data"""
         self.dataByYear()
-        for i in self.years.items():
-            print(i)
+        for year in self.years.items():
+
+            if self.years[year[0]] > self.bestYear()[1]:
+                self.best_year = year
+
+        return self.best_year
 
 
 
@@ -103,7 +104,7 @@ def driver():
 
     #most_data.displayYear() # Use this to see a visual of the bar graph of the best year
 
-    most_data.bestYear()
+    print(most_data.bestYear())
 
 
 driver()
