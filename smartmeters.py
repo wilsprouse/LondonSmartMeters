@@ -82,7 +82,7 @@ class MostData:
 
     def displayDay(self):
         """Displays the days average energy use from 2011-2014"""
-        self.DataByDay()
+        self.dataByDay()
 
         print("**Displaying Day Data Using Line Graph**")
 
