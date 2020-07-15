@@ -80,6 +80,7 @@ class MostData:
         self.dataByYear()
         for i in self.years.items():
             print(i)
+        return True
 
 
 
