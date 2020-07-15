@@ -77,9 +77,10 @@ class MostData:
     def bestYear(self):
         """This is the method that automatically gets our best year to evaluate seasonal energy data"""
         self.dataByYear()
+        print("passed")
         for year in self.years.items():
 
-            if self.years[year[0]] > self.bestYear()[1]:
+            if self.years[year[0]] > self.best_year[1]:
                 self.best_year = year
 
         return self.best_year
@@ -102,9 +103,9 @@ def driver():
 
     # most_data.displayDay() # Use this to see data per day from 2011-2014
 
-    most_data.displayYear() # Use this to see a visual of the bar graph of the best year
+    #most_data.displayYear() # Use this to see a visual of the bar graph of the best year
 
-    #print(most_data.bestYear())
+    print(most_data.bestYear())
 
 
 driver()
