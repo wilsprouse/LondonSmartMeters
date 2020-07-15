@@ -40,7 +40,10 @@ dip in energy use during the warmer months. This graph is interactive when produ
 with python code.
 
 While this project only used block_0 of the released data, this project is applicable to
-any block provided by UK Power Networks.
+any block provided by UK Power Networks. The file is hardcoded, so you must change it
+within the code, or use pythons stdin to pass in the file name as an argument.
+
+Using the run.sh file automatically pushes changes to GitHub,  and runs the program.
 
 CONCLUSION: 
 There is a clear trend in seasonal energy consumption. Trivially, we can attribute this
