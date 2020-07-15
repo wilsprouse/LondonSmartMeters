@@ -14,7 +14,7 @@ class MostData:
         self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day"])
         self.days = {}
         self.years = {"2011": 0, "2012": 0, "2013": 0, "2014": 0 }
-        self.bestYear = None
+        self.best_year = None
 
     def getData(self):
         """Returns the file data in column x row form"""
@@ -80,7 +80,6 @@ class MostData:
         self.dataByYear()
         for i in self.years.items():
             print(i)
-        return True
 
 
 
