@@ -18,13 +18,14 @@ class MostData:
 
     def getData(self):
         """Returns the file data in column x row form"""
+        print("**Getting File Data For Day Data**")
         return self.file_data
     
     def dataByDay(self):
         """This Method creates a dictionary of the days and how many data points
            the days have
         """
-
+        print("**Analyzing Individual Days**")
         sortedByDate = self.getData().sort_values(by='day')
 
         for (index, row) in sortedByDate.iterrows():
@@ -32,11 +33,12 @@ class MostData:
                 self.days[row["day"]] += 1
             else:
                 self.days[row["day"]] = 1 
-        #print(days)
+        print("**DONE**")
+        print()
 
     def dataByYear(self):
         """Gets the Average amount of data points per day for each year"""
-
+        print("**Getting Average Amount of Data Points Per Day For Each Year**")
         self.dataByDay()
 
         for key in self.days:
@@ -45,10 +47,17 @@ class MostData:
         for year in self.years.items():
             self.years[year[0]] = self.years[year[0]] / 365
 
+        print("**DONE**")
+        print()
+
     def displayYear(self):
         """Bar Graph of the average amount of data points per day by year"""
 
+
         self.dataByYear()
+
+        print("**Displaying Year Data Using Bar Graph**")
+
         xAxis = ['2011', '2012', '2013', '2014']
         energyUseAverage = [self.years['2011'], self.years['2012'], self.years['2013'], self.years['2014']]
 
@@ -67,7 +76,11 @@ class MostData:
 
 
     def displayDay(self):
+        """Displays the days average energy use from 2011-2014"""
         self.DataByDay()
+
+        print("**Displaying Day Data Using Line Graph**")
+
         plt.plot(*zip(*sorted(self.days.items())),color="green")
         plt.title("Average Household Data From 2011-2014")
         plt.xlabel('Year')
@@ -77,11 +90,14 @@ class MostData:
     def bestYear(self):
         """This is the method that automatically gets our best year to evaluate seasonal energy data"""
         self.dataByYear()
-        print("passed")
+        print("**Calculating Best Year To Use**")
         for year in self.years.items():
 
             if self.years[year[0]] > self.best_year[1]:
                 self.best_year = year
+
+        print("**DONE**")
+        print()
 
         return self.best_year
 
@@ -89,17 +105,28 @@ class MostData:
 class SeasonalEnergyUse:
 
     def __init__(self, best_year):
+        """Initialize"""
         self.file_data = pd.read_csv("block_0.csv", usecols=["day", "energy_sum"])
         self.best_year = best_year
         self.avgDayDict = {}
 
     def getData(self):
+        """Gets file data necessary for finding the seasonal energy use"""
+        print("**Getting File Data For Seasonal Energy Use**")
+
         return self.file_data
 
     def printData(self):
+        """Prints the data, if necessary"""
         print(self.file_data)
 
     def avgPerDay(self):
+        """This method finds the average per day of the best year.
+
+           ***This is the (backend) end goal of this project***
+        """
+        print("**Finding the Average Per Day of the Best Year")
+
 
         sortedDays = self.getData().sort_values(by='day')
 
@@ -115,10 +142,14 @@ class SeasonalEnergyUse:
         for day in tempDayDict.items():
             self.avgDayDict[day[0]] = round(day[1][0]/day[1][1], 2)
 
+        print("**DONE**")
+        print()
 
     def displayBestYear(self):
-
+        """This method displays a line graph of energy consumption over 2013"""
         self.avgPerDay()
+        print("**Displaying the Average Energy Consumption Over the Best Year**")
+
         plt.plot(*zip(*sorted(self.avgDayDict.items())),color="green")
         plt.title("Average Energy Use in 2013")
         plt.xlabel('2013')
@@ -133,6 +164,7 @@ class SeasonalEnergyUse:
 
 
 def driver():
+    """Driver/Main"""
 
     most_data = MostData()
 
