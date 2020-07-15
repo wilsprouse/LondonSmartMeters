@@ -42,7 +42,7 @@ class MostData:
         for key in self.days:
             self.years[key[:4]] += self.days[key]
         for year in self.years.items():
-            self.years[year] = self.years[year] / 365
+            self.years[year[0]] = self.years[year[0]] / 365
         #self.years['2011'] = self.years['2011'] / 365
         #self.years['2012'] = self.years['2012'] / 365
         #self.years['2013'] = self.years['2013'] / 365
