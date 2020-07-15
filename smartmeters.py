@@ -33,7 +33,8 @@ class MostData:
             if row["day"] in self.days:
                 self.days[row["day"]] += 1
             else:
-                self.days[row["day"]] = 1 
+                self.days[row["day"]] = 1
+
         print("**DONE**")
         print()
 
@@ -111,6 +112,12 @@ class MostData:
 
 
 class SeasonalEnergyUse:
+    """This class is used to evaluate years worth of energy data.
+       It takes the best year as calculated by the MostData class,
+       and does calculations to find the average of that year. We
+       can also use this class to display the data in the form of
+       a line graph.
+    """
 
     def __init__(self, best_year):
         """Initialize"""
@@ -121,6 +128,7 @@ class SeasonalEnergyUse:
     def getData(self):
         """Gets file data necessary for finding the seasonal energy use"""
         print("**Getting File Data For Seasonal Energy Use**")
+
 
         return self.file_data
 
@@ -150,7 +158,7 @@ class SeasonalEnergyUse:
         for day in tempDayDict.items():
             self.avgDayDict[day[0]] = round(day[1][0]/day[1][1], 2)
 
-        print("**DON**")
+        print("**DONE**")
         print()
 
     def displayBestYear(self):
@@ -181,7 +189,6 @@ def driver():
 
     #most_data.displayYear() # Use this to see a visual of the bar graph of the best year
 
-    #print(most_data.bestYear())
 
     season_use = SeasonalEnergyUse(most_data.bestYear())
 
