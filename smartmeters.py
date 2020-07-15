@@ -2,12 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-#filePD = pd.read_csv("block_0.csv", usecols=["LCLid", "day"])
-
-
-#print(filePD)
-
-
 class MostData:
     """This Class is used to produce a year that has the most data points
        since we only want to evaluate a single year's worth of data. We can use
@@ -20,6 +14,7 @@ class MostData:
         self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day"])
         self.days = {}
         self.years = {"2011": 0, "2012": 0, "2013": 0, "2014": 0 }
+        self.bestYear = None
 
     def getData(self):
         """Returns the file data in column x row form"""
@@ -46,12 +41,17 @@ class MostData:
 
         for key in self.days:
             self.years[key[:4]] += self.days[key]
+        self.years['2011'] = self.years['2011'] / 365
+        self.years['2012'] = self.years['2012'] / 365
+        self.years['2013'] = self.years['2013'] / 365
+        self.years['2014'] = self.years['2014'] / 365
 
     def displayYear(self):
         """Bar Graph of the average amount of data points per day by year"""
+
         self.dataByYear()
         xAxis = ['2011', '2012', '2013', '2014']
-        energyUseAverage = [self.years['2011']/365, self.years['2012']/365, self.years['2013']/365, self.years['2014']/365]
+        energyUseAverage = [self.years['2011'], self.years['2012'], self.years['2013'], self.years['2014']]
 
 
         x_pos = [i for i, _ in enumerate(xAxis)]
@@ -75,6 +75,21 @@ class MostData:
         plt.ylabel('Households')
         plt.show()
 
+    def bestYear(self):
+        """This is the method that automatically gets our best year to evaluate seasonal energy data"""
+        self.dataByYear()
+        for i in self.years.items():
+            print(i)
+
+
+
+
+
+
+class SeasonalEnergyUse:
+
+    def __init__(self):
+        self.file_data = pd.read_csv("block_0.csv", usecols=["LCLid", "day", "energy_mean"])
 
 
 
@@ -84,7 +99,9 @@ def driver():
 
     # most_data.displayDay() # Use this to see data per day from 2011-2014
 
-    most_data.displayYear() # Use this to see a bar graph of the best year
+    #most_data.displayYear() # Use this to see a visual of the bar graph of the best year
+
+    most_data.bestYear()
 
 
 driver()
