@@ -109,7 +109,7 @@ class SeasonalEnergyUse:
             #break
             if row["day"][:4] == self.best_year[0]:
                 if row['day'] in self.avgDayDict:
-                    self.avgDayDict[row['day']] = self.avgDayDict[row['day']][0], self.avgDayDict[row['day']][1]+1
+                    self.avgDayDict[row['day']] = self.avgDayDict[row['day']][0]+row['energy_sum'], self.avgDayDict[row['day']][1]+1
                 else:
                     self.avgDayDict[row['day']] = row['energy_sum'], 1
         print(self.avgDayDict)
