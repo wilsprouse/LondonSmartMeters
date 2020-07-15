@@ -26,6 +26,7 @@ class MostData:
            the days have
         """
         print("**Analyzing Individual Days**")
+
         sortedByDate = self.getData().sort_values(by='day')
 
         for (index, row) in sortedByDate.iterrows():
@@ -130,7 +131,7 @@ class SeasonalEnergyUse:
     def avgPerDay(self):
         """This method finds the average per day of the best year.
 
-           ***This is the (backend) end goal of this project***
+           ***This is the backend goal of this project***
         """
         print("**Finding the Average Per Day of the Best Year")
 
@@ -149,11 +150,14 @@ class SeasonalEnergyUse:
         for day in tempDayDict.items():
             self.avgDayDict[day[0]] = round(day[1][0]/day[1][1], 2)
 
-        print("**DONE**")
+        print("**DON**")
         print()
 
     def displayBestYear(self):
-        """This method displays a line graph of energy consumption over 2013"""
+        """This method displays a line graph of energy consumption over 2013
+
+           ***This is the frontend goal of this project***
+        """
         self.avgPerDay()
         print("**Displaying the Average Energy Consumption Over the Best Year**")
 
@@ -161,9 +165,7 @@ class SeasonalEnergyUse:
         plt.title("Average Energy Use in 2013")
         plt.xlabel('2013')
         plt.ylabel('Average Energy Use')
-        x = ["Jan",'Feb',"March","April","May","June","July","Aug","Sept","Oct", "Nov","Dec"]
-        x_pos = [i for i, _ in enumerate(x)]
-        plt.xticks(x, x_pos)
+
         plt.show()
 
 
