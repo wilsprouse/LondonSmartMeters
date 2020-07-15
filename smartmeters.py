@@ -74,6 +74,9 @@ class MostData:
 
         plt.show()
 
+        print("**DONE**")
+        print()
+
 
     def displayDay(self):
         """Displays the days average energy use from 2011-2014"""
@@ -87,10 +90,14 @@ class MostData:
         plt.ylabel('Households')
         plt.show()
 
+        print("**DONE**")
+        print()
+
     def bestYear(self):
         """This is the method that automatically gets our best year to evaluate seasonal energy data"""
         self.dataByYear()
         print("**Calculating Best Year To Use**")
+
         for year in self.years.items():
 
             if self.years[year[0]] > self.best_year[1]:
